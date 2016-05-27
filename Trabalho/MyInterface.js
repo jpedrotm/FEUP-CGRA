@@ -2,10 +2,10 @@
  * MyInterface
  * @constructor
  */
- 
- 
+
+
 function MyInterface() {
-	//call CGFinterface constructor 
+	//call CGFinterface constructor
 	CGFinterface.call(this);
 };
 
@@ -19,16 +19,16 @@ MyInterface.prototype.constructor = MyInterface;
 MyInterface.prototype.init = function(application) {
 	// call CGFinterface init
 	CGFinterface.prototype.init.call(this, application);
-	
+
 	// init GUI. For more information on the methods, check:
 	//  http://workshop.chromeexperiments.com/examples/gui
-	
+
 	this.gui = new dat.GUI();
 
 	// add a button:
 	// the first parameter is the object that is being controlled (in this case the scene)
 	// the identifier 'doSomething' must be a function declared as part of that object (i.e. a member of the scene class)
-	// e.g. LightingScene.prototype.doSomething = function () { console.log("Doing something..."); }; 
+	// e.g. LightingScene.prototype.doSomething = function () { console.log("Doing something..."); };
 
 	this.gui.add(this.scene, 'doSomething');
 
@@ -37,27 +37,27 @@ MyInterface.prototype.init = function(application) {
 	lightsGroup.add(this.scene,'light3');*/
 
 	// add a group of controls (and open/expand by defult)
-	
+
 	var lightsGroup=this.gui.addFolder("Lights");
 	lightsGroup.open();
 
 	// add two check boxes to the group. The identifiers must be members variables of the scene initialized in scene.init as boolean
 	// e.g. this.option1=true; this.option2=false;
-	
+
 	lightsGroup.add(this.scene, 'light1');
 	lightsGroup.add(this.scene, 'light2');
 	lightsGroup.add(this.scene, 'light3');
 	lightsGroup.add(this.scene,'light4');
 
 	this.gui.add(this.scene,'initClock');
-	
-	
+
+
 	// add a slider
 	// must be a numeric variable of the scene, initialized in scene.init e.g.
 	// this.speed=3;
 	// min and max values can be specified as parameters
-	
-	this.gui.add(this.scene, 'speed', 0.1, 2);
+
+	this.gui.add(this.scene, 'speed', 0, 2);
 
 	//Opção de texturas----------------------------------------
 	//var text= new droneTexture();
@@ -71,34 +71,38 @@ MyInterface.prototype.init = function(application) {
 /**
  * @param event {Event}
  */
+
+ MyInterface.prototype.processKeyUp = function(event) {
+ 	this.scene.drone.dontMove();
+ }
 MyInterface.prototype.processKeyDown = function(event) {
 	// call CGFinterface default code (omit if you want to override)
 	//CGFinterface.prototype.processKeyboardDown.call(this,event);
-	
+
 	// Check key codes e.g. here: http://www.asciitable.com/
 	// or use String.fromCharCode(event.keyCode) to compare chars
-	
+
 	// for better cross-browser support, you may also check suggestions on using event.which in http://www.w3schools.com/jsref/event_key_keycode.asp
 	switch (event.keyCode)
 	{
-		case (65):	// A
-		this.scene.drone.moveLeft(Math.PI/20);
-		break;
-		case(68): // D
-		this.scene.drone.moveRight(Math.PI/20);
-		break;
-		case(87): // W
-		this.scene.drone.moveFront(0.1);
-		break;
-		case(83):// S
-		this.scene.drone.moveBack(0.1);
-		break;
-		case(73): //I
-		this.scene.drone.moveUp(0.1);
-		break;
-		case(74): //J
-		this.scene.drone.moveDown(0.1);
-		break;
+    case (65):	// A
+  		this.scene.drone.moveLeft();
+  		break;
+  		case(68): // D
+  		this.scene.drone.moveRight();
+  		break;
+  		case(87): // W
+  		this.scene.drone.moveFront();
+  		break;
+  		case(83):// S
+  		this.scene.drone.moveBack();
+  		break;
+  		case(73): //I
+  		this.scene.drone.moveUp();
+  		break;
+  		case(74): //J
+  		this.scene.drone.moveDown();
+  		break;
 		case(76):
 		this.scene.drone.extendsCable();
 		break;

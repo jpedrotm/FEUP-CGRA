@@ -11,14 +11,14 @@
  	this.materialC = new CGFappearance(this.scene);
 	this.materialC.setAmbient(0.2,0.2,0.2,1);
 	this.materialC.setDiffuse(0.59,0.29,0.0,1);
-	this.materialC.setSpecular(0.58,0.29,0.0,1);	
+	this.materialC.setSpecular(0.58,0.29,0.0,1);
 	this.materialC.setShininess(10);
 	this.materialC.loadTexture("resources/images/table.png");
 
 	this.materialD = new CGFappearance(this.scene);
 	this.materialD.setAmbient(0.2,0.2,0.2,1);
 	this.materialD.setDiffuse(0.75,0.75,0.75,1);
-	this.materialD.setSpecular(0.75,0.75,0.75,1);	
+	this.materialD.setSpecular(0.75,0.75,0.75,1);
 	this.materialD.setShininess(10);
 
  };

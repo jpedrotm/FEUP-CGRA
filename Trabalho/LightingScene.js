@@ -27,7 +27,7 @@ LightingScene.prototype.init = function(application) {
 	this.light3=true;
 	this.light4=true;
 	this.iClock=true;
-	this.speed=3;
+	this.speed=1;
 
 
 	//4.4 Texturas---------------------
@@ -60,39 +60,39 @@ LightingScene.prototype.init = function(application) {
 
 	// Materials----------------------------------------------------------------------------------------
 	this.materialDefault = new CGFappearance(this);
-	
+
 	this.materialA = new CGFappearance(this);
 	this.materialA.setAmbient(0.3,0.3,0.3,1);
 	this.materialA.setDiffuse(0.6,0.6,0.6,1);
-	this.materialA.setSpecular(0,0.2,0.8,1);		
+	this.materialA.setSpecular(0,0.2,0.8,1);
 	this.materialA.setShininess(120);
 
 	this.materialB = new CGFappearance(this);
 	this.materialB.setAmbient(0.3,0.3,0.3,1);
 	this.materialB.setDiffuse(0.75,0.75,0.75,1);
-	this.materialB.setSpecular(0.75,0.75,0.75,1);	
+	this.materialB.setSpecular(0.75,0.75,0.75,1);
 	this.materialB.setShininess(100);
-	
+
 	//Material chao e paredes--------------------------------------------------------------------
 	this.materialE = new CGFappearance(this);
 	this.materialE.setAmbient(0.3,0.3,0.3,1);
 	this.materialE.setDiffuse(0.6,0.6,0.6,1);
-	this.materialE.setSpecular(0.8,0.8,0.8,1);	
+	this.materialE.setSpecular(0.8,0.8,0.8,1);
 	this.materialE.setShininess(120);
 
 	//Chao com textura---------------------------------------------------------------------------
 	this.apperancefloor = new CGFappearance(this);
 	this.apperancefloor.setAmbient(0.3,0.3,0.3,1);
 	this.apperancefloor.setDiffuse(0.6,0.6,0.6,1);
-	this.apperancefloor.setSpecular(0.8,0.8,0.8,1);	
+	this.apperancefloor.setSpecular(0.8,0.8,0.8,1);
 	this.apperancefloor.setShininess(120);
 	this.apperancefloor.loadTexture("resources/images/floor.png")
-	
+
 
 	this.apperancewindow = new CGFappearance(this);
 	this.apperancewindow .setAmbient(0.3,0.3,0.3,1);
 	this.apperancewindow .setDiffuse(0.6,0.6,0.6,1);
-	this.apperancewindow .setSpecular(0.8,0.8,0.8,1);	
+	this.apperancewindow .setSpecular(0.8,0.8,0.8,1);
 	this.apperancewindow .setShininess(120);
 	this.apperancewindow .loadTexture("resources/images/window.png");
 
@@ -100,7 +100,7 @@ LightingScene.prototype.init = function(application) {
 	this.apperanceboard = new CGFappearance(this);
 	this.apperanceboard .setAmbient(0.3,0.3,0.3,1);
 	this.apperanceboard .setDiffuse(0.3, 0.3, 0.3, 1);
-	this.apperanceboard .setSpecular(0.65, 0.65, 0.65, 1);	
+	this.apperanceboard .setSpecular(0.65, 0.65, 0.65, 1);
 	this.apperanceboard .setShininess(200);
 	this.apperanceboard .loadTexture("resources/images/board.png");
 	//this.apperanceboard .setTextureWrap('CLAMP_TO_EDGE','CLAMP_TO_EDGE');
@@ -112,17 +112,17 @@ LightingScene.prototype.init = function(application) {
 	this.slidesAppearance.setDiffuse(0.9, 0.9, 0.9, 1);
 	this.slidesAppearance.setShininess(27);
 	this.slidesAppearance.setTextureWrap('CLAMP_TO_EDGE','CLAMP_TO_EDGE');
-	
-	
+
+
 	this.clockapperance = new CGFappearance(this);
 	this.clockapperance .setAmbient(0.3,0.3,0.3,1);
 	this.clockapperance .setDiffuse(0.3, 0.3, 0.3, 1);
-	this.clockapperance .setSpecular(0.65, 0.65, 0.65, 1);	
+	this.clockapperance .setSpecular(0.65, 0.65, 0.65, 1);
 	this.clockapperance .setShininess(200);
 	this.clockapperance .loadTexture("resources/images/clock.png");
 
 	this.droneText=new droneText();
-	
+
 	this.setUpdatePeriod(100);
 };
 
@@ -143,11 +143,11 @@ LightingScene.prototype.initClock =function() {
 
 LightingScene.prototype.initLights = function() {
 	//this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
-	
+
 	// Positions for four lights
 	this.lights[0].setPosition(4, 6, 1, 1);
 	this.lights[0].setVisible(true); // show marker on light position (different from enabled)
-	
+
 	this.lights[1].setPosition(10.5, 6.0, 1.0, 1.0);
 	this.lights[1].setVisible(true); // show marker on light position (different from enabled)
 
@@ -190,7 +190,7 @@ LightingScene.prototype.initLights = function() {
 	this.lights[3].enable();
 
 
-	
+
 };
 
 LightingScene.prototype.updateLights = function() {
@@ -201,17 +201,17 @@ LightingScene.prototype.updateLights = function() {
 		this.lights[0].enable();
 		else
 		this.lights[0].disable();
-		
+
 		if(this.light2)
 		this.lights[1].enable();
 		else
 		this.lights[1].disable();
-		
+
 		if(this.light3)
 		this.lights[2].enable();
 		else
 		this.lights[2].disable();
-		
+
 		if(this.light4)
 		this.lights[3].enable();
 		else
@@ -243,7 +243,7 @@ LightingScene.prototype.display = function() {
 
 	// ---- END Background, camera athis.nrDivs/2nd axis setup
 
-	
+
 	// ---- BEGIN Geometric transformation section
 
 	// ---- END Geometric transformation section
@@ -268,7 +268,7 @@ LightingScene.prototype.display = function() {
 		this.rotate(90 * degToRad, 0, 1, 0);
 		this.scale(15, 8, 0.2);
 		//this.materialC.apply();
-		
+
 		this.apperancewindow.setTextureWrap('CLAMP_TO_EDGE','CLAMP_TO_EDGE');
 		this.apperancewindow.apply();
 		this.wall.display();
@@ -279,7 +279,7 @@ LightingScene.prototype.display = function() {
 	this.pushMatrix();
 		this.translate(7.5, 4, 0);
 		this.scale(15, 8, 0.2);
-		
+
 		this.wall.display();
 	this.popMatrix();
 
@@ -299,7 +299,7 @@ LightingScene.prototype.display = function() {
 	this.pushMatrix();
 		this.translate(4, 4.5, 0.2);
 		this.scale(BOARD_WIDTH, BOARD_HEIGHT, 1);
-		
+
 		this.apperanceboard.apply();
 		this.boardA.display();
 	this.popMatrix();
@@ -308,7 +308,7 @@ LightingScene.prototype.display = function() {
 	this.pushMatrix();
 		this.translate(10.5, 4.5, 0.2);
 		this.scale(BOARD_WIDTH, BOARD_HEIGHT, 1);
-		
+
 		this.slidesAppearance.apply();
 		this.boardB.display();
 	this.popMatrix();
@@ -331,7 +331,7 @@ LightingScene.prototype.display = function() {
 
 	this.pushMatrix();
 	this.translate(7,7,0.3);
-	
+
 	this.clockapperance.apply();
 	this.clock.display();
 	this.popMatrix();
@@ -342,7 +342,7 @@ LightingScene.prototype.display = function() {
 	this.rotate(Math.PI/2,1,0,0);
 	this.lamp1.display();
 	this.popMatrix();
-	
+
 
 	//Drone
 	this.pushMatrix();
@@ -350,7 +350,7 @@ LightingScene.prototype.display = function() {
 	this.rotate(Math.PI,0,1,0);
 	this.drone.display();
 	this.popMatrix();
-	
+
 
 	// ---- END Primitive drawing section
 };
@@ -360,12 +360,13 @@ LightingScene.prototype.display = function() {
 LightingScene.prototype.update = function update(currTime) {
 
 	this.clock.update(currTime);
-	this.drone.update();
+	this.drone.setSpeed(this.speed);
+	this.drone.update(currTime);
 };
 
 LightingScene.prototype.doSomething = function() {
 	console.log("Doing something...");
-	
+
 };
 
 var droneText=function(){

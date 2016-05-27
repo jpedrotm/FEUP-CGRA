@@ -5,7 +5,7 @@
  function DroneMotor(scene) {
  	CGFobject.call(this,scene);
 	this.center = new MyLamp(this.scene,7,7);
-	this.heli   = new MyPrism(this.scene,4,4);
+	this.heli   = new MyCylinder(this.scene,4,2);
 	this.ang = 1;
 	this.speed = 0.1;
  	this.initBuffers();
@@ -19,12 +19,12 @@
 
 
  	this.center.display();
-	
-	
+
+
 	this.scene.rotate(this.ang,0,0,1);
  	this.scene.rotate(Math.PI/2,0,1,0);
- 	this.scene.scale(0.2,0.6,3);
- 	this.scene.translate(-1,0,-2);
+ 	this.scene.scale(0.2,0.6,10);
+ 	this.scene.translate(-1,0,-0.5);
  	this.heli.display();
 
 
