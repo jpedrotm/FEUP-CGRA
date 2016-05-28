@@ -8,8 +8,8 @@
 	this.slices = slices;
 	this.stacks = stacks;
 
-  this.Tinc = 1/stacks;
-  this.Sinc = 1/slices;
+	this.Tinc = 1/stacks;
+	this.Sinc = 1/slices;
 
  	this.initBuffers();
  };

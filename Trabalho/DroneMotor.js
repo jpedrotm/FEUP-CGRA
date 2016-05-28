@@ -1,5 +1,5 @@
 /**
- * MyPrism
+ * DroneMotor
  * @constructor
  */
  function DroneMotor(scene) {

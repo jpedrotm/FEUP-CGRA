@@ -58,6 +58,8 @@ LightingScene.prototype.init = function(application) {
 	this.lamp1=new MyLamp(this,12,8);
 	this.drone=new MyDrone(this,0,0,0);
 
+	this.charge=new MyCharge(this,4,0.5,3,1);
+
 	// Materials----------------------------------------------------------------------------------------
 	this.materialDefault = new CGFappearance(this);
 
@@ -123,7 +125,7 @@ LightingScene.prototype.init = function(application) {
 
 	this.droneText=new droneText();
 
-	this.setUpdatePeriod(100);
+	this.setUpdatePeriod(33);
 };
 
 LightingScene.prototype.initCameras = function() {
@@ -256,7 +258,6 @@ LightingScene.prototype.display = function() {
 		this.translate(7.5, 0, 7.5);
 		this.rotate(-90 * degToRad, 1, 0, 0);
 		this.scale(15, 15, 0.2);
-	//	this.apperancefloor.setTextureWarp();
 		this.apperancefloor.apply();
 		this.floor.display();
 		this.materialDefault.apply();
@@ -267,7 +268,6 @@ LightingScene.prototype.display = function() {
 		this.translate(0, 4, 7.5);
 		this.rotate(90 * degToRad, 0, 1, 0);
 		this.scale(15, 8, 0.2);
-		//this.materialC.apply();
 
 		this.apperancewindow.setTextureWrap('CLAMP_TO_EDGE','CLAMP_TO_EDGE');
 		this.apperancewindow.apply();
@@ -318,7 +318,7 @@ LightingScene.prototype.display = function() {
 		this.translate(1,0,14);
 		this.rotate(-Math.PI/2,1,0,0);
 		this.collum1.display();
-	this.popMatrix();
+		this.popMatrix();
 
 	//Collum2
 	this.pushMatrix();
@@ -339,7 +339,7 @@ LightingScene.prototype.display = function() {
 	//Lamp1
 	this.pushMatrix();
 	this.translate(8,8,8);
-	this.rotate(Math.PI/2,1,0,0);
+	this.rotate(-Math.PI/2,1,0,0);
 	this.lamp1.display();
 	this.popMatrix();
 
@@ -351,6 +351,9 @@ LightingScene.prototype.display = function() {
 	this.drone.display();
 	this.popMatrix();
 
+	this.pushMatrix();
+	this.charge.display();
+	this.popMatrix();
 
 	// ---- END Primitive drawing section
 };
@@ -362,11 +365,6 @@ LightingScene.prototype.update = function update(currTime) {
 	this.clock.update(currTime);
 	this.drone.setSpeed(this.speed);
 	this.drone.update(currTime);
-};
-
-LightingScene.prototype.doSomething = function() {
-	console.log("Doing something...");
-
 };
 
 var droneText=function(){

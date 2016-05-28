@@ -25,13 +25,6 @@ MyInterface.prototype.init = function(application) {
 
 	this.gui = new dat.GUI();
 
-	// add a button:
-	// the first parameter is the object that is being controlled (in this case the scene)
-	// the identifier 'doSomething' must be a function declared as part of that object (i.e. a member of the scene class)
-	// e.g. LightingScene.prototype.doSomething = function () { console.log("Doing something..."); };
-
-	this.gui.add(this.scene, 'doSomething');
-
 	/*lightsGroup.add(this.scene,'light1');
 	lightsGroup.add(this.scene,'light2');
 	lightsGroup.add(this.scene,'light3');*/

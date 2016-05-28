@@ -8,7 +8,7 @@ function MyCable(scene, x, y, z) {
 	this.height=0.1;
 
 	this.cable = new MyCylinder(scene, 3,this.height);
-	this.hook = new MyCylinder(scene,12,1);
+	this.hook = new MyCompleteCylinder(scene,12,1);
 };
 
 MyCable.prototype = Object.create(CGFobject.prototype);
@@ -22,16 +22,23 @@ MyCable.prototype.display = function() {
 		this.scene.scale(0.1, 0.1,this.height);
 		this.cable.display();
 	this.scene.popMatrix();
+
+	this.scene.pushMatrix();
+	this.scene.translate(this.x,this.y-10*this.height,this.z);
+	this.scene.rotate(Math.PI/2,1,0,0);
+	this.scene.scale(0.2,0.2,0.1);
+	this.hook.display();
+	this.scene.popMatrix();
 };
 
 MyCable.prototype.extendCable=function(){
-	this.height+=0.1;
+	this.height+=0.01;
 };
 
 MyCable.prototype.decreaseCable=function(){
 
-if(this.height > 0.1)
-	this.height-=0.1;
+if(this.height > 0)
+	this.height-=0.01;
 };
 
 MyCable.prototype.update=function(x,y,z){

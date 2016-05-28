@@ -1,5 +1,5 @@
 /**
- * MyPrism
+ * MyCircle
  * @constructor
  */
  function MyCircle(scene, slices, stacks) {

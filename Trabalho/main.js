@@ -22,6 +22,8 @@ serialInclude([
 	'DroneMotor.js',
 	'MyCable.js',
 	'MyHook.js',
+	'MyCompleteCylinder.js',
+	'MyCharge.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);

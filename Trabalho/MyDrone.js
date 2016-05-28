@@ -13,7 +13,7 @@ function MyDrone(scene,x,y,z) {
 
 	this.motorBase = new MyCylinder(this.scene,12,2);
 	this.leg= new MyDroneLeg(this.scene,10,10);
-	this.base = new MyCylinder(this.scene,12,2);
+	this.base = new MyCompleteCylinder(this.scene,12,2);
 
 	this.motor1 = new DroneMotor(this.scene);
   this.motor2 = new DroneMotor(this.scene);
@@ -53,6 +53,7 @@ function MyDrone(scene,x,y,z) {
  	this.scene.pushMatrix();
  	this.scene.rotate(this.movAng,1,0,0);
 
+ 	this.scene.currDroneAppearance=this.scene.droneAppearancesList[this.scene.droneText.texture];
 
 //CHASSIS
 	this.scene.pushMatrix();
@@ -72,13 +73,11 @@ function MyDrone(scene,x,y,z) {
 
 //BODY
 	this.scene.pushMatrix();
-  this.scene.apperanceboard.apply();
 	this.scene.droneAppearances[this.scene.currDroneAppearance].apply();
 	this.scene.rotate(Math.PI/2,-1,0,0);
 	this.scene.scale(0.5,0.5,0.35);
 
 	this.body1.display();
-//  this.scene.materialDefault.apply();
  	this.scene.popMatrix();
 
 
@@ -307,11 +306,11 @@ function MyDrone(scene,x,y,z) {
   	  }
   	else if(this.currentStatus == "FRONT") {
   		if(this.movAng < this.maxINC)
- 			this.movAng += 0.02;
+ 			this.movAng += 0.10;
   	}
  	else if(this.currentStatus == "BACK") {
  		if(this.movAng > this.minINC)
- 			this.movAng -= 0.02;
+ 			this.movAng -= 0.10;
  	}
 
   }
