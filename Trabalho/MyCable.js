@@ -29,6 +29,8 @@ MyCable.prototype.extendCable=function(){
 };
 
 MyCable.prototype.decreaseCable=function(){
+
+if(this.height > 0.1)
 	this.height-=0.1;
 };
 

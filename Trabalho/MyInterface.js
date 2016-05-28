@@ -57,7 +57,7 @@ MyInterface.prototype.init = function(application) {
 	// this.speed=3;
 	// min and max values can be specified as parameters
 
-	this.gui.add(this.scene, 'speed', 0, 2);
+	this.gui.add(this.scene, 'speed', 0.1, 2);
 
 	//Opção de texturas----------------------------------------
 	//var text= new droneTexture();
