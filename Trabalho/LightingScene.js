@@ -122,7 +122,30 @@ LightingScene.prototype.init = function(application) {
 	this.clockapperance .setSpecular(0.65, 0.65, 0.65, 1);
 	this.clockapperance .setShininess(200);
 	this.clockapperance .loadTexture("resources/images/clock.png");
+	
 
+	this.chargeappperance = new CGFappearance(this);
+	this.chargeappperance.setAmbient(0.3,0.3,0.3,1);
+	this.chargeappperance.setDiffuse(0.7, 0.7, 0.7, 1);
+	this.chargeappperance.setSpecular(0.6, 0.6, 0.5, 1);
+	this.chargeappperance.setShininess(100);
+	this.chargeappperance.loadTexture("resources/images/nuke.png");
+
+	
+	this.collumnapperance = new CGFappearance(this);
+	this.collumnapperance.setAmbient(0.3,0.3,0.3,1);
+	this.collumnapperance.setDiffuse(0.7, 0.7, 0.7, 1);
+	this.collumnapperance.setSpecular(0.6, 0.6, 0.5, 1);
+	this.collumnapperance.setShininess(100);
+	this.collumnapperance.loadTexture("resources/images/parede.png");
+	
+	this.targetapperance = new CGFappearance(this);
+	this.targetapperance.setAmbient(0.3,0.3,0.3,1);
+	this.targetapperance.setDiffuse(0.7, 0.7, 0.7, 1);
+	this.targetapperance.setSpecular(0.6, 0.6, 0.5, 1);
+	this.targetapperance.setShininess(100);
+	this.targetapperance.loadTexture("resources/images/target.png");
+	
 	this.droneText=new droneText();
 
 	this.setUpdatePeriod(33);
@@ -315,14 +338,17 @@ LightingScene.prototype.display = function() {
 
 	//Collumn1
 		this.pushMatrix();
-		this.translate(1,0,14);
+		this.translate(0.5,0,15);
+		this.collumnapperance.apply();
 		this.rotate(-Math.PI/2,1,0,0);
+		this.rotate(Math.PI/2,0,0,1);
 		this.collum1.display();
 		this.popMatrix();
 
 	//Collum2
 	this.pushMatrix();
-	this.translate(14,0,1);
+	this.translate(15,0,0.5);
+	this.collumnapperance.apply();
 	this.rotate(-Math.PI/2,1,0,0);
 	this.collum2.display();
 	this.popMatrix();
@@ -357,6 +383,7 @@ LightingScene.prototype.display = function() {
 	this.popMatrix();
 
 	this.pushMatrix();
+	this.targetapperance.apply();
 	this.target.display();
 	this.popMatrix();
 

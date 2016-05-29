@@ -20,7 +20,7 @@ MyCharge.prototype.display = function() {
     this.scene.translate(this.x,this.y,this.z);
     this.scene.scale(this.size,this.size,this.size);
 		if(this.isInContact)
-		this.scene.materialE.apply();
+		this.scene.chargeappperance.apply();
     this.cube.display();
     this.scene.popMatrix();
 
@@ -46,7 +46,6 @@ MyCharge.prototype.verifyIsInContact=function(xHook,yHook,zHook){
 MyCharge.prototype.moveY = function(setY)
 {
 	this.y += setY;
-	console.log(this.y);
 		if(this.y < 0.5)
 		this.y = 0.5;
 		else if(this.y >= this.scene.drone.y)
