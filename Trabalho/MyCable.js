@@ -21,7 +21,7 @@ MyCable.prototype.display = function() {
 	this.scene.pushMatrix();
 		this.scene.translate(this.x,this.y,this.z);
 		this.scene.rotate(Math.PI/2, 1, 0, 0);
-		this.scene.scale(0.1, 0.1,this.height);
+		this.scene.scale(0.1, 0.1,this.height*10);
 		this.cable.display();
 	this.scene.popMatrix();
 

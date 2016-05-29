@@ -23,8 +23,8 @@
 
 	this.scene.rotate(this.ang,0,0,1);
  	this.scene.rotate(Math.PI/2,0,1,0);
- 	this.scene.scale(0.2,0.6,10);
- 	this.scene.translate(-1,0,-0.5);
+ 	this.scene.scale(0.2,0.6,5);
+ 	this.scene.translate(-1,0,-1);
  	this.heli.display();
 
 

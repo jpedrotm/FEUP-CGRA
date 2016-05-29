@@ -43,7 +43,7 @@
     	this.Sinc = 0;
 		for (var j = 0; j < this.slices; j++)
 		{
-		this.vertices.push(Math.cos(j * angle), Math.sin(j * angle), i / this.stacks);
+		this.vertices.push(Math.cos(j * angle), Math.sin(j * angle), i);
 		this.normals.push(Math.cos(j * angle), Math.sin(j * angle),0);
 		this.texCoords.push(this.Sinc, this.Tinc);
 
