@@ -155,8 +155,10 @@ function MyDrone(scene,x,y,z) {
 	this.scene.translate(-12.4,12.4,0);
 	this.motor2.display();
 	this.scene.translate(0,-24.8,0);
+	this.scene.motorapperance.apply();
 	this.motor3.display();
 	this.scene.translate(-12.4,12.5,0);
+	this.scene.droneAppearances[this.scene.currDroneAppearance].apply();
 	this.motor4.display();
  	this.scene.popMatrix();
 

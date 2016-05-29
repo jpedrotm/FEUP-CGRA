@@ -146,6 +146,13 @@ LightingScene.prototype.init = function(application) {
 	this.targetapperance.setShininess(100);
 	this.targetapperance.loadTexture("resources/images/target.png");
 	
+	this.motorapperance = new CGFappearance(this);
+	this.motorapperance.setAmbient(0.3,0.3,0.3,1);
+	this.motorapperance.setDiffuse(0.7, 0.7, 0.7, 1);
+	this.motorapperance.setSpecular(0.6, 0.6, 0.5, 1);
+	this.motorapperance.setShininess(100);
+	this.motorapperance.loadTexture("resources/images/pink.png");
+	
 	this.droneText=new droneText();
 
 	this.setUpdatePeriod(33);
