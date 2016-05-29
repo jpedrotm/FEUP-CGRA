@@ -19,21 +19,46 @@ MyCharge.prototype.display = function() {
     this.scene.pushMatrix();
     this.scene.translate(this.x,this.y,this.z);
     this.scene.scale(this.size,this.size,this.size);
+		if(this.isInContact)
+		this.scene.materialE.apply();
     this.cube.display();
     this.scene.popMatrix();
 
 };
 
-MyCharge.prototype.verifyIsInContact=function(xDrone,yDrone,zDrone){
+MyCharge.prototype.verifyIsInContact=function(xHook,yHook,zHook){
 
-    if(xDrone<this.x+this.size && xDrone>this.x-this.size)
+
+    if(xHook<this.x+this.size && xHook>this.x-this.size)
     {
-        if(yDrone<this.y+this.size && yDrone>this.y+this.size)
+        if(yHook<this.y+this.size && yHook>this.y-this.size)
         {
-            if(zDrone<this.z+this.size && zDrone>this.z+this.size)
+
+            if(zHook<this.z+this.size && zHook>this.z-this.size)
             {
                 this.isInContact=true;
+
             }
         }
     }
 };
+
+MyCharge.prototype.moveY = function(setY)
+{
+	this.y += setY;
+	console.log(this.y);
+		if(this.y < 0.5)
+		this.y = 0.5;
+		else if(this.y >= this.scene.drone.y)
+		this.y -= setY;
+}
+MyCharge.prototype.moveX = function(setX)
+{
+	this.x += setX;
+}
+MyCharge.prototype.moveZ = function(setZ)
+{
+
+	this.z += setZ;
+
+}

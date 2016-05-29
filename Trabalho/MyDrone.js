@@ -22,7 +22,8 @@ function MyDrone(scene,x,y,z) {
 	this.cable = new MyCable(this.scene,0,0,0);
 
 
-	this.ang=0;
+	this.ang=Math.PI;
+
 	this.x =  x;
 	this.y = y;
 	this.z = z;
@@ -34,7 +35,7 @@ function MyDrone(scene,x,y,z) {
 
 
      this.currentStatus = "WAIT";
- 	this.minINC = -0.4;
+ 	   this.minINC = -0.4;
 
 
     this.loadTextures();
@@ -196,14 +197,12 @@ function MyDrone(scene,x,y,z) {
  MyDrone.prototype.update = function (currTime) {
 
 
-   ;
-
   if(this.currentStatus != "WAIT")
   {
     var time = currTime - this.animationTimer;
     var mov = time % 1000;
     var a = mov * 0.003;
-    console.log(a);
+    //console.log(a);
   }
   this.animationTimer = currTime;
 	switch(this.currentStatus)
@@ -215,16 +214,25 @@ function MyDrone(scene,x,y,z) {
 
 		case ("BACK"):
 		 this.x-=Math.sin(this.ang)*a;
- 	     this.z-=Math.cos(this.ang)*a;
+ 	   this.z-=Math.cos(this.ang)*a;
+     if(this.cable.transportCargo)
+     {
+       this.scene.charge.moveZ(-Math.cos(this.ang)*a);
+        this.scene.charge.moveX(-Math.sin(this.ang)*a);
+     }
 		 this.FanSpeed(0.5*this.speed,0.1*this.speed,-0.1*this.speed,-0.1*this.speed);
 
 		break;
 
 		case ("FRONT"):
 		this.x+=Math.sin(this.ang)*a;
- 	    this.z+=Math.cos(this.ang)*a;
+ 	  this.z+=Math.cos(this.ang)*a;
 		this.FanSpeed(0.1*this.speed,0.5*this.speed,-0.1*this.speed,-0.1*this.speed);
-
+    if(this.cable.transportCargo)
+    {
+       this.scene.charge.moveZ(Math.cos(this.ang)*a);
+       this.scene.charge.moveX(Math.sin(this.ang)*a);
+    }
 		break;
 
 		case ("LEFT"):
@@ -252,7 +260,7 @@ function MyDrone(scene,x,y,z) {
   	this.motor3.update();
   	this.motor4.update();
 
-
+    this.cable.update();
 
 
   }

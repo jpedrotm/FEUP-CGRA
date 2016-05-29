@@ -56,10 +56,10 @@ LightingScene.prototype.init = function(application) {
 	this.boardB = new Plane(this, BOARD_B_DIVISIONS,-0.5,0,1.5,1);
 	this.clock=new MyClock(this,12,1);
 	this.lamp1=new MyLamp(this,12,8);
-	this.drone=new MyDrone(this,0,0,0);
+	this.drone=new MyDrone(this,6,4,6);
 
 	this.charge=new MyCharge(this,4,0.5,3,1);
-
+	this.target = new MyTarget(this,10,10,0,0,0);
 	// Materials----------------------------------------------------------------------------------------
 	this.materialDefault = new CGFappearance(this);
 
@@ -346,13 +346,18 @@ LightingScene.prototype.display = function() {
 
 	//Drone
 	this.pushMatrix();
-	this.translate(6,4,6);
-	this.rotate(Math.PI,0,1,0);
+
+
 	this.drone.display();
 	this.popMatrix();
 
+	this.materialDefault.apply();
 	this.pushMatrix();
 	this.charge.display();
+	this.popMatrix();
+
+	this.pushMatrix();
+	this.target.display();
 	this.popMatrix();
 
 	// ---- END Primitive drawing section
@@ -365,6 +370,7 @@ LightingScene.prototype.update = function update(currTime) {
 	this.clock.update(currTime);
 	this.drone.setSpeed(this.speed);
 	this.drone.update(currTime);
+	this.charge.verifyIsInContact(this.drone.x,this.drone.y-this.drone.cable.height*10,this.drone.z);
 };
 
 var droneText=function(){

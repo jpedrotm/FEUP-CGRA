@@ -6,6 +6,8 @@ function MyCable(scene, x, y, z) {
 	this.y = y;
 	this.z = z;
 	this.height=0.1;
+	this.transportCargo = false;
+	this.picks = 0;
 
 	this.cable = new MyCylinder(scene, 3,this.height);
 	this.hook = new MyCompleteCylinder(scene,12,1);
@@ -32,17 +34,41 @@ MyCable.prototype.display = function() {
 };
 
 MyCable.prototype.extendCable=function(){
-	this.height+=0.01;
+
+	if((this.scene.drone.y - 10*this.height) > 0.2)
+	{
+		this.height+=0.01;
+	}
+
+	if(this.transportCargo)
+	{
+		this.scene.charge.moveY(-0.1);
+	}
+
 };
 
 MyCable.prototype.decreaseCable=function(){
 
 if(this.height > 0)
-	this.height-=0.01;
+	{
+		this.height-=0.01;
+		if(this.transportCargo)
+		{
+			this.scene.charge.moveY(0.1);
+		}
+	}
 };
 
-MyCable.prototype.update=function(x,y,z){
+MyCable.prototype.update=function(currTime){
 
+/*
 	if(this.height<0)
 	this.height=0;
+*/
+	if(this.scene.charge.isInContact && (this.picks  == 0))
+	{
+		this.transportCargo = true;
+		this.picks ++;
+	}
+
 };

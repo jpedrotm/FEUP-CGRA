@@ -5,10 +5,10 @@
  function MyHook(scene) {
  	CGFobject.call(this, scene);
 
-    
+
     this.cylinder = new MyCylinder(scene, 3, 5);
     this.cylinder_top = new MyClockTop(scene, 3, 5);
- 	
+
  	this.hook_part1 = new MyUnitCubeQuad(scene);
  	this.hook_part2 = new MyUnitCubeQuad(scene);
  };
@@ -18,8 +18,6 @@
 
  MyHook.prototype.display = function() {
     
-   //this.scene.translate(1, 0, 1);
-   //this.scene.scale(0.2, 0.2, 0.2);
 
    this.scene.pushMatrix();
     this.scene.scale(1, 1, 0.08);
@@ -38,5 +36,5 @@
     this.scene.rotate(Math.PI/2, 0, 1, 0);
     this.scene.scale(0.1, 0.1, 0.5);
     this.hook_part2.display();
-   this.scene.popMatrix(); 
+   this.scene.popMatrix();
  }
