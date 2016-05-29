@@ -64,11 +64,11 @@ MyCable.prototype.update=function(currTime){
 /*
 	if(this.height<0)
 	this.height=0;
-*/
-	if(this.scene.charge.isInContact && (this.picks  == 0))
+*/if(this.picks == 0)
+	if(this.scene.charge.isInContact )
 	{
 		this.transportCargo = true;
-		this.picks ++;
+		this.picks += 1;
 	}
 
 };

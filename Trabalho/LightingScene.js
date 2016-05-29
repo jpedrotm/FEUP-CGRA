@@ -59,7 +59,7 @@ LightingScene.prototype.init = function(application) {
 	this.drone=new MyDrone(this,6,4,6);
 
 	this.charge=new MyCharge(this,4,0.5,3,1);
-	this.target = new MyTarget(this,10,10,0,0,0);
+	this.target = new MyTarget(this,10,10,10,0,4);
 	// Materials----------------------------------------------------------------------------------------
 	this.materialDefault = new CGFappearance(this);
 
@@ -370,7 +370,14 @@ LightingScene.prototype.update = function update(currTime) {
 	this.clock.update(currTime);
 	this.drone.setSpeed(this.speed);
 	this.drone.update(currTime);
+	if(this.drone.cable.picks == 0)
+	{
 	this.charge.verifyIsInContact(this.drone.x,this.drone.y-this.drone.cable.height*10,this.drone.z);
+
+	}
+	console.log(this.drone.cable.picks);
+	if(this.drone.cable.transportCargo)
+		this.target.delivery(this.charge.x,this.charge.y,this.charge.z);
 };
 
 var droneText=function(){
